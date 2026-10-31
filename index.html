@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Static Website Hosting with Amazon S3, CloudFront, Route 53, and ACM. A responsive academic project site demonstrating modern AWS static hosting architecture."
+    />
+    <title>Static Website Hosting with AWS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#home" aria-label="Go to home section">
+          <span class="brand-mark">AWS</span>
+          <span>Static Hosting</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#objectives">Objectives</a>
+          <a href="#services">Services</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#deployment">Deployment</a>
+          <a href="#security">Security</a>
+          <a href="#testing">Testing</a>
+          <a href="#results">Results</a>
+          <a href="#conclusion">Conclusion</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">College Cloud Computing Project</p>
+            <h1>Static Website Hosting with Amazon S3, CloudFront and Route 53</h1>
+            <p class="lead">
+              Learn how a static site can be delivered securely, quickly, and at scale using
+              Amazon S3 for storage, Amazon CloudFront for global delivery, and Amazon Route 53
+              for domain routing.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#architecture">View Architecture</a>
+              <a class="button button-secondary" href="#deployment">Deployment Steps</a>
+            </div>
+            <ul class="mini-points" aria-label="Main project goals">
+              <li>Fast static content delivery</li>
+              <li>Secure HTTPS access</li>
+              <li>Simple, low-cost hosting model</li>
+            </ul>
+          </div>
+
+          <div class="hero-panel" aria-label="Project summary panel">
+            <div class="panel-card">
+              <h2>Project Snapshot</h2>
+              <div class="stat-list">
+                <div>
+                  <strong>01</strong>
+                  <span>Amazon S3</span>
+                </div>
+                <div>
+                  <strong>02</strong>
+                  <span>CloudFront</span>
+                </div>
+                <div>
+                  <strong>03</strong>
+                  <span>Route 53</span>
+                </div>
+              </div>
+              <p>
+                A static website is hosted in an S3 bucket, cached across CloudFront edge locations,
+                and mapped to a custom domain through Route 53.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="objectives" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Project Objectives</p>
+            <h2>What this project demonstrates</h2>
+          </div>
+
+          <div class="two-column-grid">
+            <div class="content-card">
+              <h3>Scope</h3>
+              <p>
+                This project focuses on building a clean static website that explains the AWS
+                services required to host a website for a college assignment or live demonstration.
+              </p>
+              <ul class="check-list">
+                <li>Explain how S3 stores and serves content</li>
+                <li>Show CloudFront caching and HTTPS delivery</li>
+                <li>Map a custom domain through Route 53</li>
+                <li>Document secure and production-ready hosting practices</li>
+              </ul>
+            </div>
+
+            <div class="content-card accent-card">
+              <h3>Expected learning outcomes</h3>
+              <p>
+                Students learn how AWS services work together to provide a fast, secure, and cost-
+                effective static hosting solution without requiring a backend application.
+              </p>
+              <ul class="check-list">
+                <li>Understand static site hosting fundamentals</li>
+                <li>Identify secure architecture decisions</li>
+                <li>Prepare for AWS console or IaC deployment tasks</li>
+                <li>Practice project documentation and validation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section alt-bg">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Core AWS Services</p>
+            <h2>How the architecture works</h2>
+          </div>
+
+          <div class="card-grid">
+            <article class="info-card">
+              <div class="icon-box">S3</div>
+              <h3>Amazon S3</h3>
+              <p>
+                Stores the static website files such as HTML, CSS, JavaScript, and media assets in an
+                organized bucket structure.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <div class="icon-box">CDN</div>
+              <h3>Amazon CloudFront</h3>
+              <p>
+                Delivers cached content from edge locations and routes requests over HTTPS while
+                reducing latency for global visitors.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <div class="icon-box">DNS</div>
+              <h3>Amazon Route 53</h3>
+              <p>
+                Connects the custom domain name to the CloudFront distribution and resolves user
+                requests to the right endpoint.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <div class="icon-box">TLS</div>
+              <h3>ACM</h3>
+              <p>
+                Issues and manages the SSL/TLS certificate required for secure HTTPS access on the
+                custom domain.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Request Flow</p>
+            <h2>Website visitor to CloudFront and private S3 origin</h2>
+          </div>
+
+          <div class="architecture-layout">
+            <div class="diagram-wrap">
+              <img src="assets/aws-architecture.svg" alt="Architecture diagram showing visitor, Route 53, CloudFront, and private S3 origin" />
+            </div>
+
+            <div class="flow-list">
+              <div class="flow-step">
+                <span class="step-no">1</span>
+                <div>
+                  <h3>Website Visitor</h3>
+                  <p>The user requests the website using the custom domain or CloudFront URL.</p>
+                </div>
+              </div>
+
+              <div class="flow-step">
+                <span class="step-no">2</span>
+                <div>
+                  <h3>Route 53 DNS</h3>
+                  <p>Route 53 resolves the domain name to the CloudFront distribution endpoint.</p>
+                </div>
+              </div>
+
+              <div class="flow-step">
+                <span class="step-no">3</span>
+                <div>
+                  <h3>CloudFront Distribution</h3>
+                  <p>CloudFront checks the cache and serves content over HTTPS from edge locations.</p>
+                </div>
+              </div>
+
+              <div class="flow-step">
+                <span class="step-no">4</span>
+                <div>
+                  <h3>Private S3 Origin</h3>
+                  <p>CloudFront uses Origin Access Control (OAC) to read objects from a private bucket.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="deployment" class="section alt-bg">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Deployment Process</p>
+            <h2>Step-by-step AWS hosting workflow</h2>
+          </div>
+
+          <ol class="deployment-list">
+            <li>Create a private Amazon S3 bucket and upload the static website files.</li>
+            <li>Configure the bucket for website hosting with the correct index document, typically <strong>index.html</strong>.</li>
+            <li>Prepare a CloudFront distribution and set the S3 bucket as the origin.</li>
+            <li>Enable Origin Access Control (OAC) and attach the required bucket policy.</li>
+            <li>Set the CloudFront default root object to <strong>index.html</strong>.</li>
+            <li>Request and validate an ACM certificate in <strong>us-east-1</strong> for your custom domain.</li>
+            <li>Add the custom domain to the CloudFront distribution as an alternate domain name.</li>
+            <li>Create Route 53 alias records that point the domain to the CloudFront distribution.</li>
+            <li>Test the custom domain, verify HTTPS, and invalidate cache files after updates.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="security" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Security Considerations</p>
+            <h2>Best practices for a secure setup</h2>
+          </div>
+
+          <div class="security-grid">
+            <div class="content-card">
+              <h3>Recommended practices</h3>
+              <ul class="check-list">
+                <li>Use a private S3 bucket instead of public access.</li>
+                <li>Use CloudFront OAC to allow controlled reads from the origin.</li>
+                <li>Enforce HTTPS with valid SSL certificates.</li>
+                <li>Grant least-privilege permissions only where needed.</li>
+                <li>Keep configuration details and AWS credentials out of frontend code.</li>
+              </ul>
+            </div>
+
+            <div class="content-card warning-card">
+              <h3>Important reminders</h3>
+              <p>
+                Never place AWS access keys, secret access keys, account identifiers, private keys,
+                passwords, or other secrets directly in frontend code or in the repository.
+              </p>
+              <p>
+                AWS services such as hosted zones, certificates, and distributions may incur charges,
+                especially when using a custom domain and paid resources.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testing" class="section alt-bg">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Testing and Validation</p>
+            <h2>Checklist before presenting the project</h2>
+          </div>
+
+          <div class="two-column-grid">
+            <div class="content-card">
+              <h3>Functional checklist</h3>
+              <ul class="check-list">
+                <li>CloudFront URL loads successfully.</li>
+                <li>Custom domain resolves correctly.</li>
+                <li>HTTPS works without browser certificate issues.</li>
+                <li>CSS, JavaScript, and images load correctly.</li>
+                <li>Page links and navigation work on mobile and desktop.</li>
+                <li>Updated files appear after cache invalidation.</li>
+              </ul>
+            </div>
+
+            <div class="content-card">
+              <h3>Architecture validation</h3>
+              <ul class="check-list">
+                <li>The S3 origin is only reachable through CloudFront.</li>
+                <li>OAC is configured without exposing the bucket publicly.</li>
+                <li>Default root object points to <strong>index.html</strong>.</li>
+                <li>Route 53 alias records point to the CloudFront distribution.</li>
+                <li>The caching behavior matches the project requirement.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Expected Results</p>
+            <h2>What a successful implementation should achieve</h2>
+          </div>
+
+          <div class="results-box">
+            <p>
+              A student-friendly static website should present the solution clearly, explain each AWS
+              service role, and describe the secure architecture in simple language. The final project
+              should be easy to present, mobile responsive, and suitable for demonstration in a cloud
+              computing course.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="conclusion" class="section alt-bg">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Conclusion</p>
+            <h2>Why this hosting pattern is useful</h2>
+          </div>
+
+          <div class="content-card large">
+            <p>
+              Amazon S3, CloudFront, Route 53, and ACM together form a scalable and efficient way to
+              host a static website with strong performance and a professional domain experience. This
+              approach is especially useful for personal portfolios, academic projects, landing pages,
+              and business websites that do not require a backend.
+            </p>
+            <p>
+              The important idea is that the content remains static while the architecture provides
+              security, speed, and global delivery. The deployment and AWS configuration should be
+              completed separately in the AWS Console or with infrastructure-as-code tools.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Static Website Hosting with AWS</p>
+        <p>Academic project demo for S3, CloudFront, Route 53, and ACM</p>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
